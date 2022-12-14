@@ -17,9 +17,6 @@ services:
       - POSTGRES_USER=app_user
       - POSTGRES_PASSWORD=password
       - POSTGRES_DB=app_db
-    # port name
-    ports:
-      - 8181:8181
 
   # golang アプリケーション
   app:
@@ -41,4 +38,4 @@ services:
     command: go run main.go
     # port name
     ports:
-      - 8180:8181
+      - 8181:8181
