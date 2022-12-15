@@ -6,17 +6,13 @@ import (
 	"log"
 	"net/http"
 
-	// postgres ドライバ
 	_ "github.com/lib/pq"
 )
 
-// TestUser : テーブルデータ
 type TestUser struct {
 	UserID   int
 	Password string
 }
-
-// メイン関数
 func main() {
 	http.HandleFunc("/a", handler)
 	http.ListenAndServe(":8181", nil)
@@ -25,7 +21,7 @@ func main() {
 func handler(w http.ResponseWriter, r *http.Request) {
 
 	var Db *sql.DB
-	
+
 	Db, err := sql.Open("postgres", "host=postgres user=app_user password=password dbname=app_db sslmode=disable")
 	if err != nil {
 		log.Fatal(err)
